@@ -1,7 +1,7 @@
 -- ============================================================
---  SEVAK – Sample Data Seeding Script
+--  SERVIX – Sample Data Seeding Script
 -- ============================================================
-SET search_path = sevak;
+SET search_path = servix;
 
 -- ============================================================
 -- 1. CITIES  (5 rows)
@@ -33,8 +33,8 @@ INSERT INTO users (email, password, role, status) VALUES
 ('karan.carpenter@gmail.com','hashed_pass12', 'provider', 'active'),
 ('meena.tutor@gmail.com',    'hashed_pass13', 'provider', 'inactive'),
 -- Admins (user_id 14–15)
-('admin.raj@sevak.com',      'hashed_admin1', 'admin',    'active'),
-('admin.divya@sevak.com',    'hashed_admin2', 'admin',    'active');
+('admin.raj@servix.com',      'hashed_admin1', 'admin',    'active'),
+('admin.divya@servix.com',    'hashed_admin2', 'admin',    'active');
 
 -- ============================================================
 -- 3. CUSTOMERS  (7 rows, linked to user_id 1–7)
