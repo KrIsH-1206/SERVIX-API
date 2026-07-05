@@ -1,10 +1,10 @@
 -- ============================================================
---  SEVAK – Service Marketplace
+--  SERVIX – Service Marketplace
 --  IT214 DBMS Project
---  Run AFTER sevak_ddl.sql and sevak_data.sql
---  Schema: sevak
+--  Run AFTER servix_ddl.sql and servix_data.sql
+--  Schema: servix
 -- ============================================================
-SET search_path = sevak;
+SET search_path = servix;
 
 
 -- ############################################################
