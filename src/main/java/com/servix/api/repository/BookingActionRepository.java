@@ -1,0 +1,52 @@
+package com.servix.api.repository;
+
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
+
+import java.util.Map;
+
+@Repository
+public class BookingActionRepository {
+
+    private final JdbcTemplate db;
+
+    public BookingActionRepository(JdbcTemplate db) {
+        this.db = db;
+    }
+
+    // ── Cancel Booking (Calls Stored Procedure) ─────────────
+    public Map<String, Object> cancelBooking(int bookingId, String cancellationReason) {
+        try {
+            db.update("CALL sp_cancel_booking(?, ?)", bookingId, cancellationReason);
+            return Map.of(
+                    "success", true,
+                    "message", "Booking " + bookingId + " cancelled successfully",
+                    "booking_id", bookingId
+            );
+        } catch (Exception e) {
+            return Map.of(
+                    "success", false,
+                    "message", e.getMessage(),
+                    "booking_id", bookingId
+            );
+        }
+    }
+
+    // ── Confirm Booking (Calls Stored Procedure) ────────────
+    public Map<String, Object> confirmBooking(int bookingId) {
+        try {
+            db.update("CALL sp_confirm_booking(?)", bookingId);
+            return Map.of(
+                    "success", true,
+                    "message", "Booking " + bookingId + " confirmed successfully",
+                    "booking_id", bookingId
+            );
+        } catch (Exception e) {
+            return Map.of(
+                    "success", false,
+                    "message", e.getMessage(),
+                    "booking_id", bookingId
+            );
+        }
+    }
+}
