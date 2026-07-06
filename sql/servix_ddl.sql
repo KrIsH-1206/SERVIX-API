@@ -1,13 +1,13 @@
 -- ============================================================
---  SEVAK – Service Marketplace Database Management System
+--  SERVIX – Service Marketplace Database Management System
 --  DDL Script  |  IT214 DBMS Project
---  Schema: sevak
+--  Schema: servix
 -- ============================================================
 
 -- Drop and recreate schema for clean slate
-DROP SCHEMA IF EXISTS sevak CASCADE;
-CREATE SCHEMA sevak;
-SET search_path = sevak;
+DROP SCHEMA IF EXISTS servix CASCADE;
+CREATE SCHEMA servix;
+SET search_path = servix;
 
 -- ============================================================
 -- 1. USERS
@@ -354,10 +354,10 @@ CREATE UNIQUE INDEX idx_mv_city_revenue
 
 
 -- ============================================================
---  SEVAK – Stored Procedures & Triggers
+--  SERVIX – Stored Procedures & Triggers
 --  IT214 DBMS Project
 -- ============================================================
-SET search_path = sevak;
+SET search_path = servix;
 
 
 -- ============================================================
