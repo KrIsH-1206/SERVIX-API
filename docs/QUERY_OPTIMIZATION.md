@@ -1,8 +1,8 @@
-# SEVAK — Query Optimization Report
+# SERVIX — Query Optimization Report
 
 ## Overview
 
-This document demonstrates how database-level optimizations in SEVAK reduce query execution
+This document demonstrates how database-level optimizations in SERVIX reduce query execution
 time from expensive multi-table JOINs to pre-computed O(1) reads using **Materialized Views**.
 
 ---
