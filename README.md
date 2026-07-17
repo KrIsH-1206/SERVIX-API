@@ -14,7 +14,6 @@ A **service marketplace platform** that connects customers with verified service
 * 📂 Service category management
 * 🔍 Search and filtering
 * 👨‍💼 Admin operations
-* ⚡ Global exception handling
 * 🗄️ PostgreSQL database with **23 BCNF-normalized relational tables**
 
 ---
@@ -74,8 +73,6 @@ Database scripts included:
 * Clean layered design
 * PostgreSQL relational database
 * SQL query optimization
-* Dockerized deployment
-* Centralized exception handling
 
 ---
 
