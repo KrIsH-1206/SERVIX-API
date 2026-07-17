@@ -113,17 +113,6 @@ CREATE TABLE categories (
 );
 
 -- ============================================================
--- 9. SERVICES
--- ============================================================
-CREATE TABLE services (
-    service_id   SERIAL         PRIMARY KEY,
-    category_id  INT            NOT NULL REFERENCES categories(category_id),
-    service_name VARCHAR(150)   NOT NULL,
-    base_price   NUMERIC(10,2)  NOT NULL CHECK (base_price >= 0),
-    description  TEXT
-);
-
--- ============================================================
 -- 10. SERVICE VARIANTS  (Weak entity of Service)
 -- ============================================================
 CREATE TABLE service_variants (
@@ -283,6 +272,17 @@ CREATE TABLE complaints (
     subject      VARCHAR(255) NOT NULL,
     status       VARCHAR(30)  NOT NULL DEFAULT 'open'
                               CHECK (status IN ('open','in_progress','resolved','closed'))
+);
+
+-- ============================================================
+-- 23. SERVICES
+-- ============================================================
+CREATE TABLE services (
+    service_id   SERIAL         PRIMARY KEY,
+    category_id  INT            NOT NULL REFERENCES categories(category_id),
+    service_name VARCHAR(150)   NOT NULL,
+    base_price   NUMERIC(10,2)  NOT NULL CHECK (base_price >= 0),
+    description  TEXT
 );
 
 -- ============================================================
