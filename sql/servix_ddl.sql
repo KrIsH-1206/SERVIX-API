@@ -80,7 +80,6 @@ CREATE TABLE areas (
 
 -- ============================================================
 -- 7. LOCATIONS
--- (Physical location data — BCNF: {lat, lng} → {area, street, landmark})
 -- ============================================================
 CREATE TABLE locations (
     location_id SERIAL PRIMARY KEY,
@@ -94,7 +93,6 @@ CREATE TABLE locations (
 
 -- ============================================================
 -- 8. CUSTOMER ADDRESSES
--- (Maps customers to locations with a label — BCNF compliant)
 -- ============================================================
 CREATE TABLE customer_addresses (
     customer_id INT NOT NULL REFERENCES customers(customer_id) ON DELETE CASCADE,
@@ -113,7 +111,7 @@ CREATE TABLE categories (
 );
 
 -- ============================================================
--- 10. SERVICE VARIANTS  (Weak entity of Service)
+-- 10. SERVICE VARIANTS
 -- ============================================================
 CREATE TABLE service_variants (
     variant_id   SERIAL         PRIMARY KEY,
@@ -125,7 +123,7 @@ CREATE TABLE service_variants (
 );
 
 -- ============================================================
--- 11. PROVIDER SERVICES (M:N Offers Table - FIXED)
+-- 11. PROVIDER SERVICES
 -- ============================================================
 CREATE TABLE provider_services (
     provider_id INT NOT NULL REFERENCES service_providers(provider_id) ON DELETE CASCADE,
@@ -167,7 +165,7 @@ CREATE TABLE bookings (
 );
 
 -- ============================================================
--- 14. BOOKING ITEMS  (Weak entity of Booking)
+-- 14. BOOKING ITEMS
 -- ============================================================
 CREATE TABLE booking_items (
     booking_id INT           NOT NULL REFERENCES bookings(booking_id) ON DELETE CASCADE,
@@ -180,7 +178,7 @@ CREATE TABLE booking_items (
 );
 
 -- ============================================================
--- 15. BOOKING STATUS LOG  (Weak entity of Booking)
+-- 15. BOOKING STATUS LOG
 -- ============================================================
 CREATE TABLE booking_status_log (
     booking_id INT          NOT NULL REFERENCES bookings(booking_id) ON DELETE CASCADE,
@@ -191,7 +189,7 @@ CREATE TABLE booking_status_log (
 );
 
 -- ============================================================
--- 16. PAYMENTS  (1:1 with Booking)
+-- 16. PAYMENTS
 -- ============================================================
 CREATE TABLE payments (
     payment_id     SERIAL        PRIMARY KEY,
@@ -205,7 +203,7 @@ CREATE TABLE payments (
 );
 
 -- ============================================================
--- 17. CANCELLATIONS  (1:1 with Booking)
+-- 17. CANCELLATIONS
 -- ============================================================
 CREATE TABLE cancellations (
     cancel_id     SERIAL      PRIMARY KEY,
@@ -216,7 +214,7 @@ CREATE TABLE cancellations (
 );
 
 -- ============================================================
--- 18. PROVIDER DOCUMENTS  (Weak entity of ServiceProvider)
+-- 18. PROVIDER DOCUMENTS
 -- ============================================================
 CREATE TABLE provider_documents (
     document_id   SERIAL       PRIMARY KEY,
@@ -228,7 +226,7 @@ CREATE TABLE provider_documents (
 );
 
 -- ============================================================
--- 19. PROVIDER AVAILABILITY  (Weak entity of ServiceProvider)
+-- 19. PROVIDER AVAILABILITY
 -- ============================================================
 CREATE TABLE provider_availability (
     provider_id  INT         NOT NULL REFERENCES service_providers(provider_id) ON DELETE CASCADE,
@@ -242,7 +240,7 @@ CREATE TABLE provider_availability (
 );
 
 -- ============================================================
--- 20. PROVIDER REVIEWS  (Weak entity — tied to Booking)
+-- 20. PROVIDER REVIEWS
 -- ============================================================
 CREATE TABLE provider_reviews (
     review_id  SERIAL  PRIMARY KEY,
@@ -252,7 +250,7 @@ CREATE TABLE provider_reviews (
 );
 
 -- ============================================================
--- 21. SERVICE REVIEWS  (Weak entity — tied to Booking)
+-- 21. SERVICE REVIEWS
 -- ============================================================
 CREATE TABLE service_reviews (
     review_id   SERIAL PRIMARY KEY,
@@ -264,7 +262,7 @@ CREATE TABLE service_reviews (
 );
 
 -- ============================================================
--- 22. COMPLAINTS (Fixed: strictly 3NF)
+-- 22. COMPLAINTS
 -- ============================================================
 CREATE TABLE complaints (
     complaint_id INT          GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
