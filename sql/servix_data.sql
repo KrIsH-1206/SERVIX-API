@@ -97,21 +97,6 @@ INSERT INTO locations (area_id, street, landmark, latitude, longitude) VALUES
 (5,  '12, 80 Feet Road',       'Koramangala 4th Block',   12.9280000, 77.6220000);
 
 -- ============================================================
--- 7b. CUSTOMER ADDRESSES  (10 rows — maps customers to locations)
--- ============================================================
-INSERT INTO customer_addresses (customer_id, location_id, label) VALUES
-(1, 1,  'Home'),
-(1, 2,  'Office'),
-(2, 3,  'Home'),
-(3, 4,  'Home'),
-(4, 5,  'Home'),
-(5, 6,  'Home'),
-(5, 7,  'Office'),
-(6, 8,  'Home'),
-(7, 9,  'Home'),
-(3, 10, 'Office');
-
--- ============================================================
 -- 8. CATEGORIES  (6 rows)
 -- ============================================================
 INSERT INTO categories (category_name, description) VALUES
@@ -308,6 +293,21 @@ INSERT INTO complaints (booking_id, subject, status) VALUES
 (5,  'Painter arrived 1 hour late',           'in_progress'),
 (8,  'Refund not received after cancellation', 'resolved'),
 (9,  'Paint peeling off after 2 days',         'open');
+
+-- ============================================================
+-- 23. CUSTOMER ADDRESSES  (10 rows — maps customers to locations)
+-- ============================================================
+INSERT INTO customer_addresses (customer_id, location_id, label) VALUES
+(1, 1,  'Home'),
+(1, 2,  'Office'),
+(2, 3,  'Home'),
+(3, 4,  'Home'),
+(4, 5,  'Home'),
+(5, 6,  'Home'),
+(5, 7,  'Office'),
+(6, 8,  'Home'),
+(7, 9,  'Home'),
+(3, 10, 'Office');
 
 -- ============================================================
 --  END OF DATA SEEDING
