@@ -32,10 +32,10 @@ JOIN provider_services ps ON s.service_id    = ps.service_id
 JOIN service_providers sp ON ps.provider_id  = sp.provider_id
 JOIN users             u  ON sp.user_id      = u.user_id
 JOIN cities            ci ON sp.city_id      = ci.city_id
-WHERE s.service_name ILIKE '%cleaning%'
+WHERE s.service_name LIKE '%cleaning%'
   AND sp.is_active = TRUE
   AND sp.verification_status = 'verified'
-ORDER BY sp.avg_rating DESC NULLS LAST;
+ORDER BY sp.avg_rating DESC;
 
 
 -- ============================================================
