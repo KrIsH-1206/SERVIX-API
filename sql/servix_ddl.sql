@@ -265,7 +265,7 @@ CREATE TABLE service_reviews (
 -- 22. COMPLAINTS
 -- ============================================================
 CREATE TABLE complaints (
-    complaint_id INT          GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+    complaint_id SERIAL       PRIMARY KEY,
     booking_id   INT          NOT NULL REFERENCES bookings(booking_id),
     subject      VARCHAR(255) NOT NULL,
     status       VARCHAR(30)  NOT NULL DEFAULT 'open'
@@ -282,21 +282,6 @@ CREATE TABLE services (
     base_price   NUMERIC(10,2)  NOT NULL CHECK (base_price >= 0),
     description  TEXT
 );
-
--- ============================================================
---  INDEXES
--- ============================================================
-CREATE INDEX idx_bookings_customer   ON bookings(customer_id);
-CREATE INDEX idx_bookings_provider   ON bookings(provider_id);
-CREATE INDEX idx_bookings_status     ON bookings(status);
-CREATE INDEX idx_bookings_date       ON bookings(scheduled_date);
-CREATE INDEX idx_services_category   ON services(category_id);
-CREATE INDEX idx_areas_city          ON areas(city_id);
-CREATE INDEX idx_locations_area      ON locations(area_id);
-CREATE INDEX idx_cust_addr_customer  ON customer_addresses(customer_id);
-CREATE INDEX idx_prov_docs_provider  ON provider_documents(provider_id);
-CREATE INDEX idx_svc_reviews_svc     ON service_reviews(service_id);
-CREATE INDEX idx_complaints_status   ON complaints(status);
 
 -- ============================================================
 --  END OF DDL
